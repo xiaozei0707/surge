@@ -1,0 +1,17 @@
+#!name= 壁纸
+#!desc= 解锁会员权限
+#!category= sarff
+#!icon= https://raw.githubusercontent.com/xiaozei0707/surge/refs/heads/main/icon/bizhi.ico
+
+[Script]
+壁纸 VIP = type=http-response, pattern=^https?:\/\/leancloud.emotionwp.com\/.*\/classes\/wpf_account, requires-body=true, script-path=https://raw.githubusercontent.com/xiaozei0707/surge/refs/heads/main/script/bizhi.js, timeout=30
+
+
+
+
+
+
+
+
+[MITM]
+hostname = %APPEND% leancloud.emotionwp.com
