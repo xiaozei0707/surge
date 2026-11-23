@@ -1,10 +1,14 @@
-#!name=Duolingo
-#!desc=由 Quantumult X 规则 (dlg.qx) 移植为 Surge 模块格式
-
 [Script]
-Duolingo-Batch = type=http-response, pattern="^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/\d{4}-\d{1,2}-\d{1,2}\/batch", requires-body=true, max-size=-1, script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/batch.js
-Duolingo-Features = type=http-response, pattern="^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/.*\/users\/.*\/available-features.*$", requires-body=true, max-size=-1, script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/features.js
-Duolingo-Level = type=http-response, pattern="^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/.*\/users\/.*\?fields=subscriberLevel", requires-body=true, max-size=-1, script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/level.js
+# ===== Duolingo 多邻国 =====
+
+# 1. Batch：订阅数据、商店数据、计时加成
+Duolingo-Batch = type=http-response,pattern=^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/\d{4}-\d{1,2}-\d{1,2}\/batch,requires-body=1,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/batch.js
+
+# 2. Available Features：功能权限
+Duolingo-Features = type=http-response,pattern=^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/.*\/users\/.*\/available-features.*$,requires-body=1,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/features.js
+
+# 3. Subscriber Level：订阅等级
+Duolingo-Level = type=http-response,pattern=^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/.*\/users\/.*\?fields=subscriberLevel$,requires-body=1,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/level.js
 
 [MITM]
 hostname = %APPEND% ios-api-*.duolingo.*, api*.duolingo.*
