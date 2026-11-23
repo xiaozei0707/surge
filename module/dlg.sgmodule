@@ -1,9 +1,12 @@
-[MITM]
-hostname = %APPEND% ios-api-*.duolingo.*, api*.duolingo.*
+#!name=Duolingo 会员解锁
+#!desc=Duolingo Gold 解锁：batch 注入、available-features、subscriberLevel
+#!author=xiaozei0707
+#!system=ios
 
 [Script]
-Duolingo Batch = type=http-response,pattern=^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/\d{4}-\d{1,2}-\d{1,2}\/batch,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/batch.js
+duolingo_batch = type=http-response,pattern="^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/\d{4}-\d{1,2}-\d{1,2}\/batch",requires-body=1,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/batch.js
+duolingo_features = type=http-response,pattern="^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/.\/users\/.\/available-features.*$",requires-body=1,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/features.js
+duolingo_level = type=http-response,pattern="^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/.\/users\/[^?]+\?fields=.subscriberLevel.*$",requires-body=1,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/level.js
 
-Duolingo Features = type=http-response,pattern=^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/.*\/users\/.*\/available-features.*$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/features.js
-
-Duolingo SubscriberLevel = type=http-response,pattern=^https?:\/\/(?:ios-api-[^.]+|api[^.]+)\.duolingo\.[a-z.]+\/.*\/users\/[^?]+\?fields=.*subscriberLevel.*$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/xiaozei0707/proxy/refs/heads/main/loon/lpx/duolinguo_config/level.js
+[MITM]
+hostname = %APPEND% ios-api-.duolingo., api.duolingo.
