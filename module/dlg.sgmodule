@@ -1,6 +1,7 @@
 #!name=Duolingo 会员解锁
 #!desc=Duolingo Gold 解锁：batch 注入、available-features、subscriberLevel
 #!author=xiaozei0707
+#!category=sarff
 #!system=ios
 
 [Script]
